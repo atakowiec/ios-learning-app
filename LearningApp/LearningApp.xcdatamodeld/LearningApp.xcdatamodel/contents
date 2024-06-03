@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G720" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Answer" representedClassName="Answer" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <relationship name="toFlashcardCorrect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flashcard" inverseName="toCorrectAnswer" inverseEntity="Flashcard"/>
+        <relationship name="toFlashcardOther" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flashcard" inverseName="toOtherAnswers" inverseEntity="Flashcard"/>
+    </entity>
+    <entity name="Collection" representedClassName="Collection" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="toFlashcards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flashcard" inverseName="toCollection" inverseEntity="Flashcard"/>
+    </entity>
+    <entity name="Flashcard" representedClassName="Flashcard" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="learned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="question" optional="YES" attributeType="String"/>
+        <relationship name="toCollection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="toFlashcards" inverseEntity="Collection"/>
+        <relationship name="toCorrectAnswer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="toFlashcardCorrect" inverseEntity="Answer"/>
+        <relationship name="toOtherAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="toFlashcardOther" inverseEntity="Answer"/>
+    </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-    </elements>
 </model>
