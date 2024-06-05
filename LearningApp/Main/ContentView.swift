@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @ObservedObject var viewModel = CollectionViewModel()
+    @EnvironmentObject var viewModel: CollectionViewModel
     
     var body: some View {
         NavigationView {
