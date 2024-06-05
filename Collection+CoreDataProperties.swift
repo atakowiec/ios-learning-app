@@ -16,7 +16,7 @@ extension Collection {
         return NSFetchRequest<Collection>(entityName: "Collection")
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: UUID
     @NSManaged public var name: String?
     @NSManaged public var toFlashcards: NSSet?
 

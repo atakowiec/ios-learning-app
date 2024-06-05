@@ -6,7 +6,7 @@
         <relationship name="toFlashcardOther" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flashcard" inverseName="toOtherAnswers" inverseEntity="Flashcard"/>
     </entity>
     <entity name="Collection" representedClassName="Collection" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="toFlashcards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flashcard" inverseName="toCollection" inverseEntity="Flashcard"/>
     </entity>

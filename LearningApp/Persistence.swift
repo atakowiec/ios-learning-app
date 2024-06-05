@@ -13,10 +13,20 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
+        
+        let answerCorrect = Answer(context: viewContext)
+        let answerIncorrect = Answer(context: viewContext)
+        let flashcard = Flashcard(context: viewContext)
+        let collection = Collection(context: viewContext)
+        
+        answerCorrect.content = "Correct answer"
+        answerIncorrect.content = "Incorrect answer"
+        
+        flashcard.toCorrectAnswer = answerCorrect
+        flashcard.toOtherAnswers = [answerIncorrect]
+        
+        collection.toFlashcards = [flashcard]
+        
         do {
             try viewContext.save()
         } catch {
