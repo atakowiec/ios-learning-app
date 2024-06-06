@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CreateEditCollectionView: View {
     @ObservedObject var viewModel: CreateEditCollectionViewModel
+    @ObservedObject var editHolder: EditHolder<Collection>
     
-    init(viewModel: CollectionViewModel) {
-        self.viewModel = CreateEditCollectionViewModel(collectionViewModel: viewModel)
+    init(viewModel: CollectionViewModel, editHolder: EditHolder<Collection>) {
+        self.viewModel = CreateEditCollectionViewModel(collectionViewModel: viewModel, editHolder: editHolder)
+        self.editHolder = editHolder;
     }
     
     var body: some View {
@@ -27,7 +29,7 @@ struct CreateEditCollectionView: View {
                 .buttonStyle(.borderless)
                 .padding(.top)
             }
-            .navigationTitle(viewModel.isEditing() ? "Edit collection" : "Add new collection")
+            .navigationTitle(editHolder.isEditing() ? "Edit collection" : "Add new collection")
         }
     }
 }

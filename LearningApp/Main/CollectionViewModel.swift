@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 import CoreData
 
-class CollectionViewModel: ObservableObject {
+class CollectionViewModel: EditHolder<Collection> {
     public var context = PersistenceController.shared.container.viewContext
     @Published var collections: [Collection] = []
-    @Published var addCollectionVisible = false
-    @Published var collectionToEdit: Collection? = nil
     
-    init() {
+    override init() {
+        super.init()
+        
         fetchCollections()
     }
     

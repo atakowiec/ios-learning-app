@@ -11,17 +11,19 @@ import SwiftUI
 
 class CreateEditCollectionViewModel: ObservableObject {
     @ObservedObject var collectionViewModel: CollectionViewModel
+    @ObservedObject var editHolder: EditHolder<Collection>
     @Published var error = ""
     @Published var name = ""
     
-    init(collectionViewModel: CollectionViewModel) {
+    init(collectionViewModel: CollectionViewModel, editHolder: EditHolder<Collection>) {
         self.collectionViewModel = collectionViewModel
+        self.editHolder = editHolder
         
-        self.name = self.collectionViewModel.collectionToEdit?.name ?? ""
+        self.name = self.editHolder.editedObject?.name ?? ""
     }
     
     func isEditing() -> Bool {
-        return self.collectionViewModel.collectionToEdit != nil;
+        return self.editHolder.isEditing()
     }
     
     func handleButtonClick() {
@@ -33,7 +35,7 @@ class CreateEditCollectionViewModel: ObservableObject {
         }
         
         // names can't be duplicated but user can enter the same name as the name of edited collection
-        if !self.isEditing() || self.collectionViewModel.collectionToEdit!.name != name {
+        if !self.isEditing() || self.editHolder.editedObject!.name != name {
             // check whether collection with given name already exists
             guard collectionViewModel.collections.filter({ $0.name == name }).isEmpty else {
                 error = "Collection with this name already exists. Enter another name"
@@ -41,7 +43,7 @@ class CreateEditCollectionViewModel: ObservableObject {
             }
         }
         
-        var newCollection = self.collectionViewModel.collectionToEdit
+        var newCollection = self.editHolder.editedObject
         if newCollection == nil {
             newCollection = Collection(context: collectionViewModel.context)
             newCollection!.id = UUID();
@@ -50,6 +52,6 @@ class CreateEditCollectionViewModel: ObservableObject {
         newCollection!.name = name
         
         collectionViewModel.saveContext()
-        collectionViewModel.addCollectionVisible = false
+        editHolder.editorVisible = false
     }
 }

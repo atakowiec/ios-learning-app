@@ -16,13 +16,13 @@ struct ContentView: View {
             List {
                 ForEach(viewModel.collections, id: \.self.name) { collection in
                     NavigationLink {
-                        CollectionView(collection: collection)
+                        SingleCollectionView(viewModel: viewModel, collection: collection)
                     } label: {
                         CollectionListElement(collection: collection)
                             .swipeActions(edge: .leading) {
                                 Button {
-                                    viewModel.collectionToEdit = collection
-                                    viewModel.addCollectionVisible.toggle()
+                                    viewModel.editedObject = collection
+                                    viewModel.editorVisible.toggle()
                                 } label: {
                                     Text("Edit")
                                 }
@@ -33,14 +33,14 @@ struct ContentView: View {
                 }
                 .onDelete(perform: viewModel.deleteCollection)
             }
-            .sheet(isPresented: $viewModel.addCollectionVisible) {
-                CreateEditCollectionView(viewModel: viewModel)
+            .sheet(isPresented: $viewModel.editorVisible) {
+                CreateEditCollectionView(viewModel: viewModel, editHolder: viewModel)
             }
             .toolbar {
                 ToolbarItem {
                     Button(action: {
-                        viewModel.collectionToEdit = nil
-                        viewModel.addCollectionVisible.toggle()
+                        viewModel.editedObject = nil
+                        viewModel.editorVisible.toggle()
                     }, label: {
                         Label("Add collection", systemImage: "plus")
                     })
