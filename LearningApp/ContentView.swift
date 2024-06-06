@@ -21,7 +21,7 @@ struct ContentView: View {
                         CollectionListElement(collection: collection)
                             .swipeActions(edge: .leading) {
                                 Button {
-                                    viewModel.editedObject = collection
+                                    viewModel.editedCollection = collection
                                     viewModel.editorVisible.toggle()
                                 } label: {
                                     Text("Edit")
@@ -39,7 +39,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem {
                     Button(action: {
-                        viewModel.editedObject = nil
+                        viewModel.editedCollection = nil
                         viewModel.editorVisible.toggle()
                     }, label: {
                         Label("Add collection", systemImage: "plus")

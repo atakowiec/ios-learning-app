@@ -11,15 +11,15 @@ import SwiftUI
 
 class CreateEditCollectionViewModel: ObservableObject {
     @ObservedObject var collectionViewModel: CollectionViewModel
-    @ObservedObject var editHolder: EditHolder<Collection>
+    @ObservedObject var editHolder: CollectionEditHolder
     @Published var error = ""
     @Published var name = ""
     
-    init(collectionViewModel: CollectionViewModel, editHolder: EditHolder<Collection>) {
+    init(collectionViewModel: CollectionViewModel, editHolder: CollectionEditHolder) {
         self.collectionViewModel = collectionViewModel
         self.editHolder = editHolder
         
-        self.name = self.editHolder.editedObject?.name ?? ""
+        self.name = self.editHolder.editedCollection?.name ?? ""
     }
     
     func isEditing() -> Bool {
@@ -35,7 +35,7 @@ class CreateEditCollectionViewModel: ObservableObject {
         }
         
         // names can't be duplicated but user can enter the same name as the name of edited collection
-        if !self.isEditing() || self.editHolder.editedObject!.name != name {
+        if !self.isEditing() || self.editHolder.editedCollection!.name != name {
             // check whether collection with given name already exists
             guard collectionViewModel.collections.filter({ $0.name == name }).isEmpty else {
                 error = "Collection with this name already exists. Enter another name"
@@ -43,7 +43,7 @@ class CreateEditCollectionViewModel: ObservableObject {
             }
         }
         
-        var newCollection = self.editHolder.editedObject
+        var newCollection = self.editHolder.editedCollection
         if newCollection == nil {
             newCollection = Collection(context: collectionViewModel.context)
             newCollection!.id = UUID();

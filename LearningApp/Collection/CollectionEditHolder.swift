@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-class EditHolder<ObjectType>: ObservableObject {
+class CollectionEditHolder: ObservableObject {
     @Published var editorVisible: Bool = false
-    @Published var editedObject: ObjectType? = nil
+    @Published var editedCollection: Collection? = nil
     
     func isEditing() -> Bool {
-        return editedObject != nil
+        return editedCollection != nil
     }
 }

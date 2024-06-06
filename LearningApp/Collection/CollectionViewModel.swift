@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
-class CollectionViewModel: EditHolder<Collection> {
+class CollectionViewModel: CollectionEditHolder {
     public var context = PersistenceController.shared.container.viewContext
     @Published var collections: [Collection] = []
     

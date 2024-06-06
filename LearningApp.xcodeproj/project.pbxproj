@@ -16,7 +16,7 @@
 		8B3734C42C05DC7D00D1A4CE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3734C32C05DC7D00D1A4CE /* Persistence.swift */; };
 		8B3734C72C05DC7D00D1A4CE /* LearningApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B3734C52C05DC7D00D1A4CE /* LearningApp.xcdatamodeld */; };
 		8B7B04D52C11C2E9004E2653 /* SingleCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B04D42C11C2E9004E2653 /* SingleCollectionViewModel.swift */; };
-		8B7B04DB2C11D242004E2653 /* EditHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B04DA2C11D242004E2653 /* EditHolder.swift */; };
+		8B7B04DB2C11D242004E2653 /* CollectionEditHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B04DA2C11D242004E2653 /* CollectionEditHolder.swift */; };
 		8B80CDB32C0E5FF90083F145 /* Answer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80CDAD2C0E5FF90083F145 /* Answer+CoreDataClass.swift */; };
 		8B80CDB42C0E5FF90083F145 /* Answer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80CDAE2C0E5FF90083F145 /* Answer+CoreDataProperties.swift */; };
 		8B80CDB52C0E5FF90083F145 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80CDAF2C0E5FF90083F145 /* Flashcard+CoreDataClass.swift */; };
@@ -39,7 +39,7 @@
 		8B3734C32C05DC7D00D1A4CE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		8B3734C62C05DC7D00D1A4CE /* LearningApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LearningApp.xcdatamodel; sourceTree = "<group>"; };
 		8B7B04D42C11C2E9004E2653 /* SingleCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCollectionViewModel.swift; sourceTree = "<group>"; };
-		8B7B04DA2C11D242004E2653 /* EditHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHolder.swift; sourceTree = "<group>"; };
+		8B7B04DA2C11D242004E2653 /* CollectionEditHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEditHolder.swift; sourceTree = "<group>"; };
 		8B80CDAD2C0E5FF90083F145 /* Answer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Answer+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B80CDAE2C0E5FF90083F145 /* Answer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Answer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B80CDAF2C0E5FF90083F145 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -90,11 +90,11 @@
 		8B3734B92C05DC7B00D1A4CE /* LearningApp */ = {
 			isa = PBXGroup;
 			children = (
-				8B7B04D92C11D234004E2653 /* Protocols */,
 				8B7B04D32C11A644004E2653 /* DB */,
 				8B16534D2C10EE81002EA1DE /* CreateEditCollection */,
 				8BBFC8272C0FC0C400F1D20E /* SingleCollection */,
-				8BBFC8212C0FB76700F1D20E /* Main */,
+				8BBFC8212C0FB76700F1D20E /* Collection */,
+				8B3734BC2C05DC7B00D1A4CE /* ContentView.swift */,
 				8B3734BA2C05DC7B00D1A4CE /* LearningAppApp.swift */,
 				8B3734BE2C05DC7D00D1A4CE /* Assets.xcassets */,
 				8B3734C32C05DC7D00D1A4CE /* Persistence.swift */,
@@ -125,22 +125,14 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
-		8B7B04D92C11D234004E2653 /* Protocols */ = {
+		8BBFC8212C0FB76700F1D20E /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				8B7B04DA2C11D242004E2653 /* EditHolder.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		8BBFC8212C0FB76700F1D20E /* Main */ = {
-			isa = PBXGroup;
-			children = (
+				8B7B04DA2C11D242004E2653 /* CollectionEditHolder.swift */,
 				8B16534B2C10ED4C002EA1DE /* CollectionViewModel.swift */,
-				8B3734BC2C05DC7B00D1A4CE /* ContentView.swift */,
 				8BBFC8222C0FB7D400F1D20E /* CollectionListElement.swift */,
 			);
-			path = Main;
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		8BBFC8272C0FC0C400F1D20E /* SingleCollection */ = {
@@ -224,7 +216,7 @@
 			files = (
 				8B80CDB62C0E5FF90083F145 /* Flashcard+CoreDataProperties.swift in Sources */,
 				8B3734C42C05DC7D00D1A4CE /* Persistence.swift in Sources */,
-				8B7B04DB2C11D242004E2653 /* EditHolder.swift in Sources */,
+				8B7B04DB2C11D242004E2653 /* CollectionEditHolder.swift in Sources */,
 				8B16534C2C10ED4C002EA1DE /* CollectionViewModel.swift in Sources */,
 				8B80CDB52C0E5FF90083F145 /* Flashcard+CoreDataClass.swift in Sources */,
 				8B3734C72C05DC7D00D1A4CE /* LearningApp.xcdatamodeld in Sources */,

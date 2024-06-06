@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CreateEditCollectionView: View {
     @ObservedObject var viewModel: CreateEditCollectionViewModel
-    @ObservedObject var editHolder: EditHolder<Collection>
+    @ObservedObject var editHolder: CollectionEditHolder
     
-    init(viewModel: CollectionViewModel, editHolder: EditHolder<Collection>) {
+    init(viewModel: CollectionViewModel, editHolder: CollectionEditHolder) {
         self.viewModel = CreateEditCollectionViewModel(collectionViewModel: viewModel, editHolder: editHolder)
         self.editHolder = editHolder;
     }

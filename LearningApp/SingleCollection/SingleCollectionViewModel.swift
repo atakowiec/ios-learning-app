@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SingleCollectionViewModel: EditHolder<Collection> {
+class SingleCollectionViewModel: CollectionEditHolder {
     public let viewModel: CollectionViewModel
     public let collection: Collection
     
@@ -17,11 +17,11 @@ class SingleCollectionViewModel: EditHolder<Collection> {
         
         super.init()
         
-        self.editedObject = collection
+        self.editedCollection = collection
     }
     
     func onEditClick() {
-        editedObject = collection
+        editedCollection = collection
         editorVisible.toggle()
     }
     
