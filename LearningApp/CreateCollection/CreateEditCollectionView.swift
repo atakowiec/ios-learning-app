@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CreateCollectionView: View {
-    @ObservedObject var viewModel: CreateCollectionViewModel
+struct CreateEditCollectionView: View {
+    @ObservedObject var viewModel: CreateEditCollectionViewModel
     
     init(viewModel: CollectionViewModel) {
-        self.viewModel = CreateCollectionViewModel(collectionViewModel: viewModel)
+        self.viewModel = CreateEditCollectionViewModel(collectionViewModel: viewModel)
     }
     
     var body: some View {
@@ -23,11 +23,11 @@ struct CreateCollectionView: View {
                     .padding(.horizontal)
                 Text(viewModel.error)
                     .foregroundStyle(.red)
-                Button("Create collection", action: viewModel.createCollection)
+                Button("Save collection", action: viewModel.handleButtonClick)
                 .buttonStyle(.borderless)
                 .padding(.top)
             }
-            .navigationTitle("Add new collection")
+            .navigationTitle(viewModel.isEditing() ? "Edit collection" : "Add new collection")
         }
     }
 }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B16534C2C10ED4C002EA1DE /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16534B2C10ED4C002EA1DE /* CollectionViewModel.swift */; };
-		8B16534F2C10FC2A002EA1DE /* CreateCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16534E2C10FC2A002EA1DE /* CreateCollectionViewModel.swift */; };
+		8B16534F2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B16534E2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift */; };
 		8B3734BB2C05DC7B00D1A4CE /* LearningAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3734BA2C05DC7B00D1A4CE /* LearningAppApp.swift */; };
 		8B3734BD2C05DC7B00D1A4CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3734BC2C05DC7B00D1A4CE /* ContentView.swift */; };
 		8B3734BF2C05DC7D00D1A4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3734BE2C05DC7D00D1A4CE /* Assets.xcassets */; };
@@ -22,13 +22,13 @@
 		8B80CDB72C0E5FF90083F145 /* Collection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80CDB12C0E5FF90083F145 /* Collection+CoreDataClass.swift */; };
 		8B80CDB82C0E5FF90083F145 /* Collection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80CDB22C0E5FF90083F145 /* Collection+CoreDataProperties.swift */; };
 		8BBFC8232C0FB7D400F1D20E /* CollectionListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8222C0FB7D400F1D20E /* CollectionListElement.swift */; };
-		8BBFC8262C0FBCA300F1D20E /* CreateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8252C0FBCA200F1D20E /* CreateCollectionView.swift */; };
+		8BBFC8262C0FBCA300F1D20E /* CreateEditCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8252C0FBCA200F1D20E /* CreateEditCollectionView.swift */; };
 		8BBFC8292C0FC15E00F1D20E /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8282C0FC15E00F1D20E /* CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B16534B2C10ED4C002EA1DE /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
-		8B16534E2C10FC2A002EA1DE /* CreateCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewModel.swift; sourceTree = "<group>"; };
+		8B16534E2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionViewModel.swift; sourceTree = "<group>"; };
 		8B3734B72C05DC7B00D1A4CE /* LearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3734BA2C05DC7B00D1A4CE /* LearningAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningAppApp.swift; sourceTree = "<group>"; };
 		8B3734BC2C05DC7B00D1A4CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		8B80CDB12C0E5FF90083F145 /* Collection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B80CDB22C0E5FF90083F145 /* Collection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BBFC8222C0FB7D400F1D20E /* CollectionListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListElement.swift; sourceTree = "<group>"; };
-		8BBFC8252C0FBCA200F1D20E /* CreateCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionView.swift; sourceTree = "<group>"; };
+		8BBFC8252C0FBCA200F1D20E /* CreateEditCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionView.swift; sourceTree = "<group>"; };
 		8BBFC8282C0FC15E00F1D20E /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,8 +61,8 @@
 		8B16534D2C10EE81002EA1DE /* CreateCollection */ = {
 			isa = PBXGroup;
 			children = (
-				8B16534E2C10FC2A002EA1DE /* CreateCollectionViewModel.swift */,
-				8BBFC8252C0FBCA200F1D20E /* CreateCollectionView.swift */,
+				8B16534E2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift */,
+				8BBFC8252C0FBCA200F1D20E /* CreateEditCollectionView.swift */,
 			);
 			path = CreateCollection;
 			sourceTree = "<group>";
@@ -213,8 +213,8 @@
 				8B16534C2C10ED4C002EA1DE /* CollectionViewModel.swift in Sources */,
 				8B80CDB52C0E5FF90083F145 /* Flashcard+CoreDataClass.swift in Sources */,
 				8B3734C72C05DC7D00D1A4CE /* LearningApp.xcdatamodeld in Sources */,
-				8B16534F2C10FC2A002EA1DE /* CreateCollectionViewModel.swift in Sources */,
-				8BBFC8262C0FBCA300F1D20E /* CreateCollectionView.swift in Sources */,
+				8B16534F2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift in Sources */,
+				8BBFC8262C0FBCA300F1D20E /* CreateEditCollectionView.swift in Sources */,
 				8BBFC8292C0FC15E00F1D20E /* CollectionView.swift in Sources */,
 				8B80CDB72C0E5FF90083F145 /* Collection+CoreDataClass.swift in Sources */,
 				8B3734BD2C05DC7B00D1A4CE /* ContentView.swift in Sources */,

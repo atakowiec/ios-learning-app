@@ -13,6 +13,7 @@ class CollectionViewModel: ObservableObject {
     public var context = PersistenceController.shared.container.viewContext
     @Published var collections: [Collection] = []
     @Published var addCollectionVisible = false
+    @Published var collectionToEdit: Collection? = nil
     
     init() {
         fetchCollections()
@@ -26,13 +27,10 @@ class CollectionViewModel: ObservableObject {
         }
     }
     
-    func createCollection(name: String) {
-        
-    }
-    
     func saveContext() {
         do {
             try context.save()
+            context.refreshAllObjects()
             fetchCollections()
         } catch {
             // Replace this implementation with code to handle the error appropriately.
