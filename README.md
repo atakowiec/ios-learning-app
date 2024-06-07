@@ -50,6 +50,9 @@
 - Pole do wpisania nazwy kolekcji
 - Możliwość zapisania zmian lub anulowania zmian (cofniecia)
 
+### Widok kontaktu 
+- Mapa
+
 ## Model danych
 
 ### Kolekcja
