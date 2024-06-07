@@ -23,12 +23,24 @@ struct CreateEditCollectionView: View {
                 TextField("Collection name", text: $viewModel.name)
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal)
+
+                HStack {
+                    Text("Select color:")
+                    ColorPicker("", selection: $viewModel.color)
+                }
+                .padding(.horizontal)
+
                 Text(viewModel.error)
                     .foregroundStyle(.red)
+
                 Button("Save collection", action: viewModel.handleButtonClick)
-                .buttonStyle(.borderless)
-                .padding(.top)
+                    .buttonStyle(.borderless)
+                    .padding(.top)
             }
+            .padding()
+            .background(Color(.secondarySystemBackground).opacity(0.8))
+            .cornerRadius(10)
+            .frame(maxWidth: UIScreen.main.bounds.width * 0.9)
             .navigationTitle(editHolder.isEditing() ? "Edit collection" : "Add new collection")
         }
     }

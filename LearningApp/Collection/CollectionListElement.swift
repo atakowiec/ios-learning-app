@@ -15,7 +15,10 @@ struct CollectionListElement: View {
             HStack {
                 Text(collection.name ?? "Unnamed collection")
                 Spacer()
+                Image(systemName: "pencil.tip.crop.circle.fill")
+                                .foregroundColor(Color(hex: collection.color ?? "#FFFFFF"))
             }
+
             HStack {
                 Spacer()
                 Text("\(collection.toFlashcards?.count ?? 0) flashcards")

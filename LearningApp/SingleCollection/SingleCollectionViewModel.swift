@@ -10,7 +10,8 @@ import Foundation
 class SingleCollectionViewModel: CollectionEditHolder {
     public let viewModel: CollectionViewModel
     public let collection: Collection
-    
+    @Published var newFlashCard: Flashcard? = nil
+    @Published var isAddingNewFlashCard: Bool = false
     init(viewModel: CollectionViewModel, collection: Collection) {
         self.viewModel = viewModel
         self.collection = collection
@@ -26,6 +27,8 @@ class SingleCollectionViewModel: CollectionEditHolder {
     }
     
     func handleAddFlashcard() {
+        isAddingNewFlashCard.toggle()
         
     }
+
 }

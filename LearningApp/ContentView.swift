@@ -14,10 +14,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.collections, id: \.self.name) { collection in
-                    NavigationLink {
+                ForEach(viewModel.collections, id: \.self.id) { collection in
+                    NavigationLink (destination: {
                         SingleCollectionView(viewModel: viewModel, collection: collection)
-                    } label: {
+                    }, label: {
                         CollectionListElement(collection: collection)
                             .swipeActions(edge: .leading) {
                                 Button {
@@ -26,10 +26,10 @@ struct ContentView: View {
                                 } label: {
                                     Text("Edit")
                                 }
-                                    .tint(.blue)
+                                .tint(.blue)
                             }
                             .tag(collection.name!)
-                    }
+                    })
                 }
                 .onDelete(perform: viewModel.deleteCollection)
             }
@@ -37,6 +37,11 @@ struct ContentView: View {
                 CreateEditCollectionView(viewModel: viewModel, editHolder: viewModel)
             }
             .toolbar {
+                ToolbarItem {
+                    NavigationLink(destination: MapView()) {
+                                            Label("Contact Info", systemImage: "mappin")
+                                        }
+                }
                 ToolbarItem {
                     Button(action: {
                         viewModel.editedCollection = nil

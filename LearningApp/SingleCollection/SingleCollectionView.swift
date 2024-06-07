@@ -16,21 +16,28 @@ struct SingleCollectionView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                if viewModel.collection.toFlashcards?.count == 0 {
-                    Text("This collection is empty!")
-                        .padding()
-                    Button("Add new flashcard", action: viewModel.handleAddFlashcard)
-                        .buttonStyle(.borderless)
-                } else {
-                    
+        VStack {
+            if viewModel.collection.toFlashcards?.count == 0 {
+                Text("This collection is empty!")
+                    .padding()
+                Button("Add new flashcard", action: viewModel.handleAddFlashcard)
+                    .buttonStyle(.borderless)
+            } else {
+                Spacer()
+                NavigationLink {
+                    LearningView(viewModel: collectionViewModel, collection: viewModel.collection)
+                } label: {
+                    Text("Start learning")
+                        .buttonStyle(.plain)
                 }
             }
         }
         .navigationTitle("\(viewModel.collection.name ?? "Unnamed") - Collection")
         .sheet(isPresented: $viewModel.editorVisible, content: {
             CreateEditCollectionView(viewModel: collectionViewModel, editHolder: viewModel)
+        })
+        .sheet(isPresented: $viewModel.isAddingNewFlashCard, content: {
+            CreateNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection)
         })
         .toolbar {
             ToolbarItem {

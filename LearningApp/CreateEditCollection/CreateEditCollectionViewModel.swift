@@ -14,12 +14,14 @@ class CreateEditCollectionViewModel: ObservableObject {
     @ObservedObject var editHolder: CollectionEditHolder
     @Published var error = ""
     @Published var name = ""
+    @Published var color = Color.white
     
     init(collectionViewModel: CollectionViewModel, editHolder: CollectionEditHolder) {
         self.collectionViewModel = collectionViewModel
         self.editHolder = editHolder
         
         self.name = self.editHolder.editedCollection?.name ?? ""
+        self.color = Color(hex: self.editHolder.editedCollection?.color ?? "#FFFFFF")
     }
     
     func isEditing() -> Bool {
@@ -50,6 +52,25 @@ class CreateEditCollectionViewModel: ObservableObject {
         }
         
         newCollection!.name = name
+        newCollection!.color = color.toHexString()
+
+        var flashcards: [Flashcard] = []
+        
+        for _ in 1..<20 {
+            let flashcard = Flashcard(context: collectionViewModel.context)
+            
+            let answerCorrect = Answer(context: collectionViewModel.context)
+            let answerIncorrect = Answer(context: collectionViewModel.context)
+            
+            answerCorrect.content = "Correct answer"
+            answerIncorrect.content = "Incorrect answer"
+            
+            flashcard.toCorrectAnswer = answerCorrect
+            flashcard.toOtherAnswers = [answerIncorrect]
+            flashcards.append(flashcard)
+        }
+        
+        newCollection?.toFlashcards = NSSet(array: flashcards)
         
         collectionViewModel.saveContext()
         editHolder.editorVisible = false
