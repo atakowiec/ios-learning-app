@@ -48,6 +48,7 @@
 
 ### Widok edycji i dodawania kolekcji
 - Pole do wpisania nazwy kolekcji
+- Pole do dodania koloru
 - Możliwość zapisania zmian lub anulowania zmian (cofniecia)
 
 ### Widok kontaktu 
@@ -58,6 +59,7 @@
 ### Kolekcja
 - Nazwa
 - Fiszki (relacja toMany)
+- Kolor
 
 ### Fiszka
 - Pytanie
