@@ -15,21 +15,22 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(viewModel.collections, id: \.self.id) { collection in
-                    NavigationLink (destination: {
-                        SingleCollectionView(viewModel: viewModel, collection: collection)
-                    }, label: {
-                        CollectionListElement(collection: collection)
-                            .swipeActions(edge: .leading) {
-                                Button {
-                                    viewModel.editedCollection = collection
-                                    viewModel.editorVisible.toggle()
-                                } label: {
-                                    Text("Edit")
+                    NavigationLink(
+                        destination: SingleCollectionView(viewModel: viewModel, collection: collection),
+                        label: {
+                            CollectionListElement(collection: collection)
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        viewModel.editedCollection = collection
+                                        viewModel.editorVisible.toggle()
+                                    } label: {
+                                        Text("Edit")
+                                    }
+                                    .tint(.blue)
                                 }
-                                .tint(.blue)
-                            }
-                            .tag(collection.name!)
-                    })
+                                .tag(collection.name!)
+                        }
+                    )
                 }
                 .onDelete(perform: viewModel.deleteCollection)
             }
@@ -37,12 +38,12 @@ struct ContentView: View {
                 CreateEditCollectionView(viewModel: viewModel, editHolder: viewModel)
             }
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: MapView()) {
-                                            Label("Contact Info", systemImage: "mappin")
-                                        }
+                        Label("Contact Info", systemImage: "mappin")
+                    }
                 }
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         viewModel.editedCollection = nil
                         viewModel.editorVisible.toggle()
@@ -59,3 +60,4 @@ struct ContentView: View {
 #Preview {
     ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
+

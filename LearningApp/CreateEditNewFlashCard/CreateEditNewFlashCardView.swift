@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CreateNewFlashCardView: View {
-    @ObservedObject var viewModel: CreateNewFlashCardViewModel
+struct CreateEditNewFlashCardView: View {
+    @ObservedObject var viewModel: CreateEditNewFlashCardViewModel
     
-    init(viewModel: SingleCollectionViewModel, addedToCollection: Collection) {
-        self.viewModel = CreateNewFlashCardViewModel(collectionViewModel: viewModel, addedToCollection: addedToCollection)
+    init(viewModel: SingleCollectionViewModel, addedToCollection: Collection, flashCardToEdit: Flashcard? = nil) {
+        self.viewModel = CreateEditNewFlashCardViewModel(collectionViewModel: viewModel, addedToCollection: addedToCollection, flashCardToEdit: flashCardToEdit)
     }
     
     var body: some View {
@@ -48,7 +48,7 @@ struct CreateNewFlashCardView: View {
                 })
 
 
-                Button("Add", action: viewModel.handleAddButtonClick)
+                Button("Save", action: viewModel.handleAddButtonClick)
                 .buttonStyle(.borderless)
                 .padding(.top)
             }

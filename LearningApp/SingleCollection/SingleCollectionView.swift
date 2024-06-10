@@ -23,6 +23,24 @@ struct SingleCollectionView: View {
                 Button("Add new flashcard", action: viewModel.handleAddFlashcard)
                     .buttonStyle(.borderless)
             } else {
+                List {
+                    ForEach(viewModel.FlashCards, id: \.self) { flashcard in
+                        NavigationLink(destination: {
+                            CreateEditNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection, flashCardToEdit: flashcard)
+                        }, label: {
+                            SingleCollectionListElement(flashcard: flashcard)
+                                
+
+                        })
+                        .tag(flashcard)
+                        
+
+                    }
+                    .onDelete(perform: viewModel.deleteFlashcard)
+                }.id(viewModel.refreshID)
+                
+                
+
                 Spacer()
                 NavigationLink {
                     LearningView(viewModel: collectionViewModel, collection: viewModel.collection)
@@ -36,8 +54,8 @@ struct SingleCollectionView: View {
         .sheet(isPresented: $viewModel.editorVisible, content: {
             CreateEditCollectionView(viewModel: collectionViewModel, editHolder: viewModel)
         })
-        .sheet(isPresented: $viewModel.isAddingNewFlashCard, content: {
-            CreateNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection)
+        .sheet(isPresented: $viewModel.isProccesingFlashCard, content: {
+            CreateEditNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection)
         })
         .toolbar {
             ToolbarItem {
@@ -52,6 +70,9 @@ struct SingleCollectionView: View {
                     Label("Add flashcard", systemImage: "plus")
                 })
             }
+        }
+        .onAppear{
+            viewModel.fetchFlashCards()
         }
     }
 }

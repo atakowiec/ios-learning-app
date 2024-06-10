@@ -54,24 +54,6 @@ class CreateEditCollectionViewModel: ObservableObject {
         newCollection!.name = name
         newCollection!.color = color.toHexString()
 
-        var flashcards: [Flashcard] = []
-        
-        for _ in 1..<20 {
-            let flashcard = Flashcard(context: collectionViewModel.context)
-            
-            let answerCorrect = Answer(context: collectionViewModel.context)
-            let answerIncorrect = Answer(context: collectionViewModel.context)
-            
-            answerCorrect.content = "Correct answer"
-            answerIncorrect.content = "Incorrect answer"
-            
-            flashcard.toCorrectAnswer = answerCorrect
-            flashcard.toOtherAnswers = [answerIncorrect]
-            flashcards.append(flashcard)
-        }
-        
-        newCollection?.toFlashcards = NSSet(array: flashcards)
-        
         collectionViewModel.saveContext()
         editHolder.editorVisible = false
     }

@@ -28,6 +28,12 @@
 		8BBFC8232C0FB7D400F1D20E /* CollectionListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8222C0FB7D400F1D20E /* CollectionListElement.swift */; };
 		8BBFC8262C0FBCA300F1D20E /* CreateEditCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8252C0FBCA200F1D20E /* CreateEditCollectionView.swift */; };
 		8BBFC8292C0FC15E00F1D20E /* SingleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFC8282C0FC15E00F1D20E /* SingleCollectionView.swift */; };
+		E67BD1922C177CD70067941D /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67BD18E2C177CD70067941D /* Answer.swift */; };
+		E67BD1932C177CD70067941D /* CreateEditNewFlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67BD18F2C177CD70067941D /* CreateEditNewFlashCardView.swift */; };
+		E67BD1942C177CD70067941D /* CreateEditNewFlashCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67BD1902C177CD70067941D /* CreateEditNewFlashCardViewModel.swift */; };
+		E67BD1972C177CE30067941D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67BD1952C177CE30067941D /* MapView.swift */; };
+		E67BD1992C177E5E0067941D /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67BD1982C177E5E0067941D /* ColorHex.swift */; };
+		E67BD19B2C1786A30067941D /* SingleCollectionListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67BD19A2C1786A30067941D /* SingleCollectionListElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +59,12 @@
 		8BBFC8222C0FB7D400F1D20E /* CollectionListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListElement.swift; sourceTree = "<group>"; };
 		8BBFC8252C0FBCA200F1D20E /* CreateEditCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionView.swift; sourceTree = "<group>"; };
 		8BBFC8282C0FC15E00F1D20E /* SingleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCollectionView.swift; sourceTree = "<group>"; };
+		E67BD18E2C177CD70067941D /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		E67BD18F2C177CD70067941D /* CreateEditNewFlashCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditNewFlashCardView.swift; sourceTree = "<group>"; };
+		E67BD1902C177CD70067941D /* CreateEditNewFlashCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditNewFlashCardViewModel.swift; sourceTree = "<group>"; };
+		E67BD1952C177CE30067941D /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E67BD1982C177E5E0067941D /* ColorHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
+		E67BD19A2C1786A30067941D /* SingleCollectionListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCollectionListElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,7 @@
 		8B16534D2C10EE81002EA1DE /* CreateEditCollection */ = {
 			isa = PBXGroup;
 			children = (
+				E67BD1982C177E5E0067941D /* ColorHex.swift */,
 				8B16534E2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift */,
 				8BBFC8252C0FBCA200F1D20E /* CreateEditCollectionView.swift */,
 			);
@@ -103,6 +116,8 @@
 		8B3734B92C05DC7B00D1A4CE /* LearningApp */ = {
 			isa = PBXGroup;
 			children = (
+				E67BD1962C177CE30067941D /* Map */,
+				E67BD1912C177CD70067941D /* CreateEditNewFlashCard */,
 				3FC85C8C2C131B4900C760FC /* Learning */,
 				8B7B04D32C11A644004E2653 /* DB */,
 				8B16534D2C10EE81002EA1DE /* CreateEditCollection */,
@@ -154,8 +169,27 @@
 			children = (
 				8BBFC8282C0FC15E00F1D20E /* SingleCollectionView.swift */,
 				8B7B04D42C11C2E9004E2653 /* SingleCollectionViewModel.swift */,
+				E67BD19A2C1786A30067941D /* SingleCollectionListElement.swift */,
 			);
 			path = SingleCollection;
+			sourceTree = "<group>";
+		};
+		E67BD1912C177CD70067941D /* CreateEditNewFlashCard */ = {
+			isa = PBXGroup;
+			children = (
+				E67BD18E2C177CD70067941D /* Answer.swift */,
+				E67BD18F2C177CD70067941D /* CreateEditNewFlashCardView.swift */,
+				E67BD1902C177CD70067941D /* CreateEditNewFlashCardViewModel.swift */,
+			);
+			path = CreateEditNewFlashCard;
+			sourceTree = "<group>";
+		};
+		E67BD1962C177CE30067941D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E67BD1952C177CE30067941D /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,19 +264,25 @@
 			files = (
 				8B80CDB62C0E5FF90083F145 /* Flashcard+CoreDataProperties.swift in Sources */,
 				8B3734C42C05DC7D00D1A4CE /* Persistence.swift in Sources */,
+				E67BD1932C177CD70067941D /* CreateEditNewFlashCardView.swift in Sources */,
 				3FC85C8E2C131B8800C760FC /* LearningView.swift in Sources */,
 				8B7B04DB2C11D242004E2653 /* CollectionEditHolder.swift in Sources */,
 				8B16534C2C10ED4C002EA1DE /* CollectionViewModel.swift in Sources */,
 				8B80CDB52C0E5FF90083F145 /* Flashcard+CoreDataClass.swift in Sources */,
 				8B3734C72C05DC7D00D1A4CE /* LearningApp.xcdatamodeld in Sources */,
+				E67BD1922C177CD70067941D /* Answer.swift in Sources */,
+				E67BD1972C177CE30067941D /* MapView.swift in Sources */,
 				8B16534F2C10FC2A002EA1DE /* CreateEditCollectionViewModel.swift in Sources */,
 				8BBFC8262C0FBCA300F1D20E /* CreateEditCollectionView.swift in Sources */,
 				8B7B04D52C11C2E9004E2653 /* SingleCollectionViewModel.swift in Sources */,
+				E67BD1992C177E5E0067941D /* ColorHex.swift in Sources */,
+				E67BD1942C177CD70067941D /* CreateEditNewFlashCardViewModel.swift in Sources */,
 				8BBFC8292C0FC15E00F1D20E /* SingleCollectionView.swift in Sources */,
 				3FC85C902C131BC600C760FC /* LearningViewModel.swift in Sources */,
 				8B80CDB72C0E5FF90083F145 /* Collection+CoreDataClass.swift in Sources */,
 				8B3734BD2C05DC7B00D1A4CE /* ContentView.swift in Sources */,
 				8B80CDB32C0E5FF90083F145 /* Answer+CoreDataClass.swift in Sources */,
+				E67BD19B2C1786A30067941D /* SingleCollectionListElement.swift in Sources */,
 				8B3734BB2C05DC7B00D1A4CE /* LearningAppApp.swift in Sources */,
 				8BBFC8232C0FB7D400F1D20E /* CollectionListElement.swift in Sources */,
 				8B80CDB42C0E5FF90083F145 /* Answer+CoreDataProperties.swift in Sources */,
