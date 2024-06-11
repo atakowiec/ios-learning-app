@@ -11,7 +11,7 @@ import CoreData
 
 class CollectionViewModel: CollectionEditHolder {
     public var context = PersistenceController.shared.container.viewContext
-    @Published var collections: [Collection] = []
+    var collections: [Collection] = []
     
     override init() {
         super.init()

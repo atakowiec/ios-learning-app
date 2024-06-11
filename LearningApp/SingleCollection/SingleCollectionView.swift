@@ -26,22 +26,15 @@ struct SingleCollectionView: View {
                 List {
                     ForEach(viewModel.FlashCards, id: \.self) { flashcard in
                         NavigationLink(destination: {
-                            
                             CreateEditNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection, flashCardToEdit: flashcard)
                         }, label: {
                             SingleCollectionListElement(flashcard: flashcard)
-                                
-
                         })
                         .tag(flashcard)
-                        
-
                     }
                     .onDelete(perform: viewModel.deleteFlashcard)
                 }.id(viewModel.refreshID)
                 
-                
-
                 Spacer()
                 NavigationLink {
                     LearningView(viewModel: collectionViewModel, collection: viewModel.collection)

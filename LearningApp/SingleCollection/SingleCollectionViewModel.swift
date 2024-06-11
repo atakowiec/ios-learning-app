@@ -30,13 +30,10 @@ class SingleCollectionViewModel: CollectionEditHolder {
         self.editedCollection = collection
     }
     func fetchFlashCards() {
-   
-            if let cards = collection.toFlashcards?.allObjects as? [Flashcard]{
-                FlashCards = cards
-                refreshID = UUID()
-            }
-            
-  
+        if let cards = collection.toFlashcards?.allObjects as? [Flashcard]{
+            FlashCards = cards
+            refreshID = UUID()
+        }
     }
 
     func onEditClick() {
@@ -68,6 +65,4 @@ class SingleCollectionViewModel: CollectionEditHolder {
             saveContext()
         }
     }
-
-
 }
