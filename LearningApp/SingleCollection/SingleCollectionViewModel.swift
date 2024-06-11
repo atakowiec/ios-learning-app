@@ -30,14 +30,13 @@ class SingleCollectionViewModel: CollectionEditHolder {
         self.editedCollection = collection
     }
     func fetchFlashCards() {
-        do {
-            try self.FlashCards = context.fetch(Flashcard.fetchRequest())
-            print("Started fetching")
-            refreshID = UUID()
+   
+            if let cards = collection.toFlashcards?.allObjects as? [Flashcard]{
+                FlashCards = cards
+                refreshID = UUID()
+            }
             
-        } catch {
-            print("Failed to fetch flashcards")
-        }
+  
     }
 
     func onEditClick() {

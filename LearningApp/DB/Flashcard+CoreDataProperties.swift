@@ -16,7 +16,7 @@ extension Flashcard {
         return NSFetchRequest<Flashcard>(entityName: "Flashcard")
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: UUID
     @NSManaged public var learned: Bool
     @NSManaged public var question: String?
     @NSManaged public var toOtherAnswers: NSSet?

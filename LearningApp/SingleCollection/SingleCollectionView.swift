@@ -26,6 +26,7 @@ struct SingleCollectionView: View {
                 List {
                     ForEach(viewModel.FlashCards, id: \.self) { flashcard in
                         NavigationLink(destination: {
+                            
                             CreateEditNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection, flashCardToEdit: flashcard)
                         }, label: {
                             SingleCollectionListElement(flashcard: flashcard)
