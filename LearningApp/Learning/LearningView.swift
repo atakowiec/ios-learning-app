@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct LearningView: View {
     @ObservedObject var viewModel: LearningViewModel
     @State var offset = CGSize.zero
+    @State var swipeTextSize: CGFloat = 0
     
     init(viewModel: CollectionViewModel, collection: Collection) {
         self.viewModel = LearningViewModel(viewModel: viewModel, collection: collection)
@@ -19,24 +21,24 @@ struct LearningView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                HStack {
-                    if offset.width < 0 {
-                        Spacer()
-                        Text("Still learning")
-                            .padding()
-                            .foregroundStyle(getColor())
-                            .font(.title)
-                            .bold()
-                    }
-                    if offset.width > 0 {
-                        Text("Learned")
-                            .padding()
-                            .foregroundStyle(getColor())
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                    }
+            VStack(alignment: .leading) {
+                if offset.width < 0 {
+                    Text("Still learning")
+                        .padding()
+                        .foregroundStyle(getColor())
+                        .font(.system(size: min(abs(offset.width) / 200 * 30, 60)))
+                        .bold()
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: 400, alignment: Alignment.trailing)
+                }
+                if offset.width > 0 {
+                    Text("Learned")
+                        .padding()
+                        .foregroundStyle(getColor())
+                        .font(.system(size: min(abs(offset.width) / 200 * 30, 60)))
+                        .bold()
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 400, alignment: Alignment.leading)
                 }
             }
             VStack {
@@ -80,14 +82,19 @@ struct LearningView: View {
                             self.offset = gesture.translation
                         }
                         .onEnded { _ in
-                            if offset.width > 200 {
-                                viewModel.onSwipe(true)
-                            }
-                            if offset.width < -200 {
-                                viewModel.onSwipe(false)
-                            }
-                            
                             withAnimation {
+                                if abs(self.offset.width) < 200 {
+                                    self.offset = .zero
+                                } else {
+                                    self.offset.width *= 2
+                                }
+                            } completion: {
+                                if offset.width > 200 {
+                                    viewModel.onSwipe(true)
+                                }
+                                if offset.width < -200 {
+                                    viewModel.onSwipe(false)
+                                }
                                 self.offset = .zero
                             }
                         }
