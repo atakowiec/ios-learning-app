@@ -17,6 +17,22 @@ struct SingleCollectionView: View {
     
     var body: some View {
         VStack {
+            
+            if viewModel.FlashCards.count > 0{
+                HStack{
+                    let percentage = viewModel.progress * 100
+                    Text("Progress:")
+                        .padding(.leading)
+                    Text(String(format: "%.0f%%", percentage))
+                        .padding(.trailing)
+                    Spacer()
+                    ProgressView(value: viewModel.progress)
+                        .progressViewStyle(LinearProgressViewStyle())
+                        .padding()
+                }
+            }
+           
+            
             if viewModel.collection.toFlashcards?.count == 0 {
                 Text("This collection is empty!")
                     .padding()
@@ -47,7 +63,7 @@ struct SingleCollectionView: View {
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                         .background(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(viewModel.backgroundColor)
+                                    .fill(viewModel.backgroundColor).opacity(0.5)
                         )
                         .padding([.horizontal, .bottom])
                 }

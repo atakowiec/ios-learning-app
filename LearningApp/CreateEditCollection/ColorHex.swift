@@ -38,4 +38,8 @@ extension Color {
     func adjustedIfWhite() -> Color {
         return self.isWhite ? .black : self
     }
+    
+    func adjustedIfWhiteToGray() -> Color {
+        return self.isWhite ? .gray : self
+    }
 }

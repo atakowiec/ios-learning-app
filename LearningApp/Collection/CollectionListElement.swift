@@ -16,6 +16,7 @@ struct CollectionListElement: View {
         VStack {
             HStack {
                 Text(collection.name ?? "Unnamed collection")
+                    .font(.system(size: 24))
                 Spacer()
                 Image(systemName: "pencil.tip.crop.circle.fill")
                     .foregroundColor(foregoundCol)

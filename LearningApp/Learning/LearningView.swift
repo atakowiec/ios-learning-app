@@ -42,12 +42,13 @@ struct LearningView: View {
                 }
             }
             VStack {
+                let grayColor = Color(viewModel.cardColor).adjustedIfWhiteToGray()
                 if viewModel.currentFlashcard != nil {
                     VStack {
                         Spacer()
                         Text(viewModel.currentFlashcard!.question ?? "No question")
                             .frame(width: 350, height: 200)
-                            .background(Color(.secondarySystemBackground).opacity(0.6))
+                            .background(grayColor.opacity(0.4))
                             .cornerRadius(10)
                             .padding()
                         Spacer()

@@ -28,12 +28,13 @@ struct ContentView: View {
                                     }
                                     .tint(.blue)
                                 }
-                                .tag(collection.name!)
+                                .tag(collection.id)
                         }
                     )
                 }
                 .onDelete(perform: viewModel.deleteCollection)
             }
+            
             .sheet(isPresented: $viewModel.editorVisible) {
                 CreateEditCollectionView(viewModel: viewModel, editHolder: viewModel)
             }

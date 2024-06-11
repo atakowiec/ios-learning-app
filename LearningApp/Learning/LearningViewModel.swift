@@ -9,11 +9,12 @@ class LearningViewModel: ObservableObject {
     @Published var allAnswers: [Answer] = []
     @Published var correctAnswer: Answer? = nil
     @Published var selectedAnswer: Answer? = nil
+    @Published var cardColor = Color.gray
     
     init(viewModel: CollectionViewModel, collection: Collection) {
         self.viewModel = viewModel
         self.collection = collection
-        
+        self.cardColor = Color(hex: collection.color ?? "#A0A0A0")
         guard let flashcardSet = collection.toFlashcards, let flashcards = flashcardSet.allObjects as? [Flashcard] else {
             fatalError("")
         }

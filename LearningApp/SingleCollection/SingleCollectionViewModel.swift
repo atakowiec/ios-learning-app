@@ -18,6 +18,7 @@ class SingleCollectionViewModel: CollectionEditHolder {
     @Published var FlashCards: [Flashcard] = []
     @Published var refreshID = UUID()
     @Published var backgroundColor = Color.white
+    @Published var progress: Float = 0.0
     
     @Published var flashCardToEdit: Flashcard? = nil
     init(viewModel: CollectionViewModel, collection: Collection) {
@@ -33,6 +34,7 @@ class SingleCollectionViewModel: CollectionEditHolder {
         if let cards = collection.toFlashcards?.allObjects as? [Flashcard]{
             FlashCards = cards
             refreshID = UUID()
+            updateProgress()
         }
     }
 
@@ -64,5 +66,11 @@ class SingleCollectionViewModel: CollectionEditHolder {
             offsets.map { FlashCards[$0] }.forEach(context.delete)
             saveContext()
         }
+    }
+    
+    func updateProgress(){
+        let totalCards = FlashCards.count
+        let learnedCards = FlashCards.filter { $0.learned }.count
+        progress = totalCards > 0 ? Float(learnedCards) / Float(totalCards) : 0.0
     }
 }
