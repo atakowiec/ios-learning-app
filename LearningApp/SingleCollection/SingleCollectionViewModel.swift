@@ -17,13 +17,13 @@ class SingleCollectionViewModel: CollectionEditHolder {
     @Published var isProccesingFlashCard: Bool = false
     @Published var FlashCards: [Flashcard] = []
     @Published var refreshID = UUID()
-
+    @Published var backgroundColor = Color.white
     
     @Published var flashCardToEdit: Flashcard? = nil
     init(viewModel: CollectionViewModel, collection: Collection) {
         self.viewModel = viewModel
         self.collection = collection
-        
+        self.backgroundColor = Color (hex: collection.color ?? "#FFFFFF" )
         super.init()
         fetchFlashCards()
         

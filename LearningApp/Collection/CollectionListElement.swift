@@ -11,12 +11,14 @@ struct CollectionListElement: View {
     var collection: Collection
     
     var body: some View {
+        let foregoundCol = Color(hex: collection.color ?? "#000000").adjustedIfWhite()
+
         VStack {
             HStack {
                 Text(collection.name ?? "Unnamed collection")
                 Spacer()
                 Image(systemName: "pencil.tip.crop.circle.fill")
-                                .foregroundColor(Color(hex: collection.color ?? "#FFFFFF"))
+                    .foregroundColor(foregoundCol)
             }
 
             HStack {
@@ -24,7 +26,8 @@ struct CollectionListElement: View {
                 Text("\(collection.toFlashcards?.count ?? 0) flashcards")
                     .textScale(.secondary)
             }
-            .foregroundColor(.gray)
+            .foregroundColor(foregoundCol)
         }
+        
     }
 }

@@ -34,6 +34,8 @@ struct SingleCollectionView: View {
                     }
                     .onDelete(perform: viewModel.deleteFlashcard)
                 }.id(viewModel.refreshID)
+                   
+                    
                 
                 Spacer()
                 NavigationLink {
@@ -41,6 +43,13 @@ struct SingleCollectionView: View {
                 } label: {
                     Text("Start learning")
                         .buttonStyle(.plain)
+                        .padding()
+                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(viewModel.backgroundColor)
+                        )
+                        .padding([.horizontal, .bottom])
                 }
             }
         }

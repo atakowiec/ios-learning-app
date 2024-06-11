@@ -12,9 +12,11 @@ import SwiftUI
 class CreateEditCollectionViewModel: ObservableObject {
     @ObservedObject var collectionViewModel: CollectionViewModel
     @ObservedObject var editHolder: CollectionEditHolder
+
     @Published var error = ""
     @Published var name = ""
     @Published var color = Color.white
+    
     
     init(collectionViewModel: CollectionViewModel, editHolder: CollectionEditHolder) {
         self.collectionViewModel = collectionViewModel
@@ -56,5 +58,6 @@ class CreateEditCollectionViewModel: ObservableObject {
 
         collectionViewModel.saveContext()
         editHolder.editorVisible = false
+
     }
 }

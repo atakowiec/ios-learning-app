@@ -18,6 +18,7 @@ class CreateEditNewFlashCardViewModel: ObservableObject {
     @Published var validAnswer = ""
     @Published var errorAnswerValid = ""
     @Published var showTrash = false
+    @Published var backgroundColor = Color.white
     
     let collectionViewModel: SingleCollectionViewModel
     var flashCardToEdit: Flashcard?
@@ -27,6 +28,7 @@ class CreateEditNewFlashCardViewModel: ObservableObject {
         self.collectionViewModel = collectionViewModel
         self.addedToCollection = addedToCollection
         self.flashCardToEdit = flashCardToEdit
+        self.backgroundColor = Color(hex: addedToCollection.color ?? "#FFFFFF")
         
         if let flashcard = flashCardToEdit{
             question = flashcard.question ?? ""

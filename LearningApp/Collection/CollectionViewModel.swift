@@ -11,7 +11,7 @@ import CoreData
 
 class CollectionViewModel: CollectionEditHolder {
     public var context = PersistenceController.shared.container.viewContext
-    var collections: [Collection] = []
+    @Published var collections: [Collection] = []
     
     override init() {
         super.init()
@@ -22,6 +22,7 @@ class CollectionViewModel: CollectionEditHolder {
     func fetchCollections() {
         do {
             try self.collections = context.fetch(Collection.fetchRequest())
+            
         } catch {
             print("Failed to fetch collections")
         }

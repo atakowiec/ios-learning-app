@@ -28,4 +28,14 @@ extension Color {
         let b = components?[2] ?? 0
         return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
     }
+    
+    var isWhite: Bool {
+        guard let components = UIColor(self).cgColor.components, components.count >= 3 else { return false }
+        return components[0] > 0.95 && components[1] > 0.95 && components[2] > 0.95
+    }
+    
+    // Funkcja pomocnicza do zwrócenia czarnego koloru, jeśli jest biały
+    func adjustedIfWhite() -> Color {
+        return self.isWhite ? .black : self
+    }
 }
