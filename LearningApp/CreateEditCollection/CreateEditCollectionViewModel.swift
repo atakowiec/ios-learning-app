@@ -48,10 +48,9 @@ class CreateEditCollectionViewModel: ObservableObject {
         var newCollection = self.editHolder.editedCollection
         if newCollection == nil {
             newCollection = Collection(context: collectionViewModel.context)
-            newCollection!.id = UUID();
-            
         }
         
+        newCollection!.id = UUID();
         newCollection!.name = name
         newCollection!.color = color.toHexString()
 

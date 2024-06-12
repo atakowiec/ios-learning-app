@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SingleCollectionView: View {
-    @EnvironmentObject var collectionViewModel: CollectionViewModel
     @ObservedObject var viewModel: SingleCollectionViewModel
     
     init(viewModel: CollectionViewModel, collection: Collection) {
@@ -55,7 +54,7 @@ struct SingleCollectionView: View {
                 
                 Spacer()
                 NavigationLink {
-                    LearningView(viewModel: collectionViewModel, collection: viewModel.collection)
+                    LearningView(viewModel: viewModel.viewModel, collection: viewModel.collection)
                 } label: {
                     Text("Start learning")
                         .buttonStyle(.plain)
@@ -71,7 +70,7 @@ struct SingleCollectionView: View {
         }
         .navigationTitle("\(viewModel.collection.name ?? "Unnamed") - Collection")
         .sheet(isPresented: $viewModel.editorVisible, content: {
-            CreateEditCollectionView(viewModel: collectionViewModel, editHolder: viewModel)
+            CreateEditCollectionView(viewModel: viewModel.viewModel, editHolder: viewModel)
         })
         .sheet(isPresented: $viewModel.isProccesingFlashCard, content: {
             CreateEditNewFlashCardView(viewModel: viewModel, addedToCollection: viewModel.collection)

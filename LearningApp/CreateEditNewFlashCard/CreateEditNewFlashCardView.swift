@@ -26,6 +26,7 @@ struct CreateEditNewFlashCardView: View {
                 Text("Enter valid Answer:")
                 TextField("Valid Answer: ", text: $viewModel.validAnswer)
                     .textFieldStyle(.roundedBorder)
+                    .padding()
                   
                 Text(viewModel.errorAnswerValid)
                     .foregroundStyle(.red)
