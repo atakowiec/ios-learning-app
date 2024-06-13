@@ -89,6 +89,10 @@ struct SingleCollectionView: View {
                 })
             }
         }
+        .onAppear{
+            viewModel.fetchFlashCards()
+            viewModel.refreshID = UUID()
+        }
 
     }
 }
