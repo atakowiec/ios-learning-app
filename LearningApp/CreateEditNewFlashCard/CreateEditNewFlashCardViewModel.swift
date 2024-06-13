@@ -47,6 +47,7 @@ class CreateEditNewFlashCardViewModel: ObservableObject {
             answers.append(AnswerObject(text: ""))
         }
     }
+
     func handleAddButtonClick(){
         errorName = ""
         errorAnswerValid = ""

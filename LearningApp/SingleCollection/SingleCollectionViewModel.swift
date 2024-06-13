@@ -65,6 +65,8 @@ class SingleCollectionViewModel: CollectionEditHolder {
         withAnimation {
             offsets.map { FlashCards[$0] }.forEach(context.delete)
             saveContext()
+            fetchFlashCards()
+            refreshID = UUID()
         }
     }
     

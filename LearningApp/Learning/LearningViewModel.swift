@@ -52,6 +52,7 @@ class LearningViewModel: ObservableObject {
     func onSwipe(_ learned: Bool) {
         if let flashcard = currentFlashcard {
             flashcard.learned = learned
+
             viewModel.saveContext()
             
             if !learned {

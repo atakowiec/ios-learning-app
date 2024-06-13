@@ -69,9 +69,8 @@ struct CreateEditNewFlashCardView: View {
             .navigationBarTitleDisplayMode(.inline)
 
         }
+
     }
-    func addAnswer(){
-        
-    }
+
 }
 

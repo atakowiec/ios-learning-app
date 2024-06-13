@@ -89,8 +89,6 @@ struct SingleCollectionView: View {
                 })
             }
         }
-        .onAppear{
-            viewModel.fetchFlashCards()
-        }
+
     }
 }
