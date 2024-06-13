@@ -24,26 +24,24 @@
 - Jeżeli kolekcja nie zawiera żadnych fiszek, lub wszystkie są oznaczone jako "nauczone", wyświetla się stosowny komunikat
 
 ### widok pojedynczej fiszki
-- (Moze) nazwa kolekcji
 - Pytanie
 - Poprawna odpowiedź
 - Pozostałe odpowiedzi
-- Przyciski do usuwania fiszki, edycji fiszki, powrotu (toolbar albo przyciski)
+- Przyciski do usuwania fiszki, edycji fiszki, powrotu 
 
 ### Widok edycji i dodawania fiszki
 - Pole do wpisania pytania
 - Pole do wpisania poprawnej odpowiedzi
-- Pole do wpisania niepoprawnej odpowiedzi i przycisk do dodania kolejnego pola (max 4 powiedzmy)
-- Możliwość zapisania zmian lub anulowania zmian (2 przyciski)
+- Pole do wpisania niepoprawnej odpowiedzi i przycisk do dodania kolejnego pola
+- Możliwość zapisania zmian lub anulowania zmian
 
 ### Widok nauki
-- Może wyswietlenie liczby fiszek które pozostały do nauczenia lub jakis progressbar
+- Progressbar
 - Losowo wyświetla fiszki z danej kolekcji, które nie zostały wcześniej oznaczone jako "nauczone"
 - Wybranie odpowiedzi pokazuje poprawną odpowiedź
 - Przyciski "Umiem" i "Nie umiem", które przenoszą do kolejnej fiszki
 - "Nie umiem" sprawia fiszka zostaje dodana na koniec kolejki
-- "Umiem" sprawia, że fiszka zostaje oznaczona jako "nauczone" i nie jest już wyświetlana w trybie nauki
-- (pojebane ale musimy gdzies dac gest) swipe left = "Nie umiem", swipe right = "Umiem"
+- "Umiem" sprawia, że fiszka zostaje oznaczona jako "nauczona" i nie jest już wyświetlana w trybie nauki
 - Po przejściu przez wszystkie fiszki, wyświetla się komunikat o zakończeniu nauki i możliwość powrotu do [widoku kolekcji](#widok-pojedynczej-kolekcji)
 
 ### Widok edycji i dodawania kolekcji
@@ -69,6 +67,5 @@
 - Nauczone (bool)
 
 ### Odpowiedź
-#### (zrobimy to w osobnej encji bo musi byc 3 encje i tez damy mozliwosc dodawania roznej liczby (min 2) odpowiedzi)
 - Treść
 - Fiszka (relacja toOne)
