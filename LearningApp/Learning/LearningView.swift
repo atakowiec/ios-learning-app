@@ -11,7 +11,6 @@ import Foundation
 struct LearningView: View {
     @ObservedObject var viewModel: LearningViewModel
     @State var offset = CGSize.zero
-    @State var swipeTextSize: CGFloat = 0
     
     init(viewModel: CollectionViewModel, collection: Collection) {
         self.viewModel = LearningViewModel(viewModel: viewModel, collection: collection)
@@ -42,15 +41,26 @@ struct LearningView: View {
                 }
             }
             VStack {
-                let grayColor = Color(viewModel.cardColor).adjustedIfWhiteToGray()
                 if viewModel.currentFlashcard != nil {
                     VStack {
                         Spacer()
                         Text(viewModel.currentFlashcard!.question ?? "No question")
                             .frame(width: 350, height: 200)
-                            .background(grayColor.opacity(0.4))
+                            .background(grayColor)
                             .cornerRadius(10)
                             .padding()
+                            .onTapGesture {
+                                viewModel.onQuestionClick()
+                            }
+                            .zIndex(1)
+                            if viewModel.allAnswers.count == 1 {
+                                HStack {
+                                    Text("Click to \(viewModel.answerOffset == 0 ? "hide" : "show") answer")
+                                        .foregroundStyle(.gray)
+                                }
+                                .offset(y: -50)
+                                .zIndex(2)
+                            }
                         Spacer()
                         
                         ForEach(viewModel.allAnswers, id: \.self) { answer in
@@ -61,13 +71,13 @@ struct LearningView: View {
                                 .onTapGesture {
                                     viewModel.onAnswerClick(answer)
                                 }
+                                .offset(y: viewModel.answerOffset)
+                                .zIndex(0)
                         }
                         Spacer()
-                        if viewModel.selectedAnswer != nil{
-                            HStack {
-                                Text("Swipe right or left")
-                                    .foregroundStyle(.gray)
-                            }
+                        HStack {
+                            Text("Swipe right or left")
+                                .foregroundStyle(.gray)
                         }
                     }
                     .background(getColor())
@@ -76,9 +86,6 @@ struct LearningView: View {
                     .gesture(DragGesture()
                         .onChanged {
                             gesture in
-                            if(viewModel.selectedAnswer == nil) {
-                                return
-                            }
                             
                             self.offset = gesture.translation
                         }
@@ -112,7 +119,7 @@ struct LearningView: View {
                     .cornerRadius(10)
                     .padding()
                     .frame(width: 350, height: 200)
-                    .background(Color(.secondarySystemBackground).opacity(0.6))
+                    .background(grayColor)
                 }
             }
             .padding()
@@ -134,7 +141,7 @@ struct LearningView: View {
     
     func getAnswerColor(_ answer: Answer) -> Color {
         if viewModel.selectedAnswer == nil {
-            return Color(.secondarySystemBackground).opacity(0.6)
+            return grayColor
         }
         
         if answer == viewModel.correctAnswer {
@@ -145,6 +152,6 @@ struct LearningView: View {
             return .red.opacity(0.6)
         }
         
-        return Color(.secondarySystemBackground).opacity(0.6)
+        return grayColor
     }
 }

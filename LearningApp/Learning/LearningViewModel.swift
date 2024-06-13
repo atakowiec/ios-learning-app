@@ -11,6 +11,8 @@ class LearningViewModel: ObservableObject {
     @Published var selectedAnswer: Answer? = nil
     @Published var cardColor = Color.gray
     
+    @Published var answerOffset = CGFloat.zero
+    
     init(viewModel: CollectionViewModel, collection: Collection) {
         self.viewModel = viewModel
         self.collection = collection
@@ -43,9 +45,17 @@ class LearningViewModel: ObservableObject {
         
         self.allAnswers = answers + [currentFlashcard!.toCorrectAnswer!]
         self.correctAnswer = currentFlashcard!.toCorrectAnswer!
+        
+        if allAnswers.count == 1 {
+            answerOffset = -300
+        }
     }
     
     func onAnswerClick(_ answer: Answer) {
+        if self.allAnswers.count == 1 {
+            return
+        }
+        
         self.selectedAnswer = answer
     }
     
@@ -78,5 +88,15 @@ class LearningViewModel: ObservableObject {
         })
         
         nextFlashcard()
+    }
+    
+    func onQuestionClick() {
+        if allAnswers.count != 1 {
+            return
+        }
+        
+        withAnimation {
+            answerOffset = answerOffset == 0 ? -300 : 0
+        }
     }
 }

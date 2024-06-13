@@ -53,7 +53,7 @@ struct MapView: View {
                        }
                        .padding()
                        .frame(maxWidth: .infinity)
-                       .background(Color(.secondarySystemBackground).opacity(0.6))
+                       .background(grayColor)
                        .cornerRadius(10)
                        
                        Map(coordinateRegion: $region)

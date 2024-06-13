@@ -8,6 +8,8 @@
 import SwiftUI
 import CoreData
 
+let grayColor = Color(hex: "eeeeee")
+
 struct ContentView: View {
     @EnvironmentObject var viewModel: CollectionViewModel
     

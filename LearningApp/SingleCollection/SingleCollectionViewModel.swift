@@ -75,4 +75,12 @@ class SingleCollectionViewModel: CollectionEditHolder {
         let learnedCards = FlashCards.filter { $0.learned }.count
         progress = totalCards > 0 ? Float(learnedCards) / Float(totalCards) : 0.0
     }
+    
+    func resetLearned() {
+        collection.toFlashcards?.allObjects.forEach {
+            ($0 as? Flashcard)!.learned = false
+        }
+        viewModel.saveContext()
+        refreshID = UUID()
+    }
 }

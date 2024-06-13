@@ -89,6 +89,15 @@ struct SingleCollectionView: View {
                 })
             }
         }
+        .toolbar {
+            if viewModel.collection.toFlashcards?.allObjects.first(where: {($0 as? Flashcard)!.learned}) != nil {
+                ToolbarItem {
+                    Button(action: viewModel.resetLearned, label: {
+                        Label("Reset learned", systemImage: "arrow.clockwise")
+                    })
+                }
+            }
+        }
         .onAppear{
             viewModel.fetchFlashCards()
             viewModel.refreshID = UUID()
